@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+.product-card {
+  width: 100%;
+  max-width: 30rem;
+}
+
+.product-card-items {
+  @include flex-column;
+  @include respond-to("desktop") {
+    flex-direction: row;
+  }
+  background-color: $white;
+  border-radius: 10px;
+
+  img {
+    display: block;
+    width: 100%;
+    @include respond-to("desktop") {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    border-radius: 10px 10px 0px 0px;
+    @include respond-to("desktop") {
+      border-radius: 10px 0px 0px 10px;
+    }
+  }
+}

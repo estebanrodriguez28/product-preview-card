@@ -1,0 +1,24 @@
+@use "./variables" as *;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center-main {
+  @include flex-column;
+  justify-content: center;
+}
+
+@mixin flex-column-center-both {
+  @include flex-column-center-main;
+  align-items: center;
+}
+
+@mixin respond-to($media) {
+  @if $media == "desktop" {
+    @media screen and (min-width: $desktop) {
+      @content;
+    }
+  }
+}

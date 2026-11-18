@@ -1,0 +1,7 @@
+@use "../abstracts" as *;
+body {
+  @include flex-column-center-both;
+  background-color: $cream;
+  min-height: 100dvh;
+  padding: 1rem;
+}
