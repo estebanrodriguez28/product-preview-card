@@ -4,15 +4,6 @@
   box-sizing: border-box;
 }
 
-.attribution {
-  font-size: 0.6875rem;
-  text-align: center;
-}
-
-.attribution a {
-  color: hsl(228, 45%, 44%);
-}
-
 body {
   font-size: 14px;
 }
@@ -24,18 +15,68 @@ body {
   letter-spacing: 0.4rem;
   font-size: 0.8rem;
   font-weight: 500;
-  margin-top: 1rem;
 }
 
 .product-title {
   font-family: Fraunces;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+@media screen and (min-width: 992px) {
+  .product-title {
+    font-size: 2rem;
+    max-width: 10ch;
+  }
+}
+
+.product-description {
+  font-family: Montserrat;
+  color: hsl(228, 12%, 48%);
+  line-height: 1.5;
+}
+
+.product-price {
+  font-family: Fraunces;
+  font-weight: 700;
+  color: hsl(158, 36%, 37%);
+  font-size: 1.75rem;
+}
+
+.crossed-out-price {
+  font-family: Montserrat;
+  color: hsl(228, 12%, 48%);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.cart-button {
+  font-family: Montserrat;
+  font-weight: 700;
+}
+
+.cart-button {
+  display: flex;
+  justify-content: center;
+  background-color: hsl(158, 36%, 37%);
+  padding: 15px 10px;
+  gap: 10px;
+  border-radius: 5px;
+  color: hsl(0, 0%, 100%);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+.cart-button:hover, .cart-button:focus-visible {
+  background-color: hsl(158, 42%, 18%);
+}
+.cart-button .cart-icon {
+  width: 15px;
+  height: 15px;
 }
 
 .product-card {
   width: 100%;
-  max-width: 30rem;
+  max-width: 37.5rem;
 }
 
 .product-card-items {
@@ -51,21 +92,13 @@ body {
   background-color: hsl(0, 0%, 100%);
   border-radius: 10px;
 }
-.product-card-items img {
+.product-card-items .product-photo {
   display: block;
   width: 100%;
-}
-@media screen and (min-width: 992px) {
-  .product-card-items img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-.product-card-items img {
   border-radius: 10px 10px 0px 0px;
 }
 @media screen and (min-width: 992px) {
-  .product-card-items img {
+  .product-card-items .product-photo {
     border-radius: 10px 0px 0px 10px;
   }
 }
@@ -73,8 +106,8 @@ body {
 .product-card-content {
   display: flex;
   flex-direction: column;
+  padding: 30px;
   gap: 20px;
-  padding: 10px 20px 20px;
 }
 
 body {
@@ -85,6 +118,27 @@ body {
   background-color: hsl(30, 38%, 92%);
   min-height: 100dvh;
   padding: 1rem;
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.equal-space {
+  flex-basis: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */

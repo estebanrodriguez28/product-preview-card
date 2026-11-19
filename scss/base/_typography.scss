@@ -10,11 +10,39 @@ body {
   letter-spacing: 0.4rem;
   font-size: 0.8rem;
   font-weight: 500;
-  margin-top: 1rem;
 }
 
 .product-title {
   font-family: Fraunces;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  @include respond-to("desktop") {
+    font-size: 2rem;
+    max-width: 10ch;
+  }
+}
+
+.product-description {
+  font-family: Montserrat;
+  color: $grey;
+  line-height: 1.5;
+}
+
+.product-price {
+  font-family: Fraunces;
+  font-weight: 700;
+  color: $green-500;
+  font-size: 1.75rem;
+}
+
+.crossed-out-price {
+  font-family: Montserrat;
+  color: $grey;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.cart-button {
+  font-family: Montserrat;
+  font-weight: 700;
 }
