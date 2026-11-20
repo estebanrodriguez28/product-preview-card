@@ -62,10 +62,20 @@ SCSS is similar to css syntax but has some extended functionality. Structure I u
 <img src="images/basic-scss-structure.png" width="200" />
 
 
-  The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all the scss files within that folder. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
+  The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all the scss files within that folder. 
 
 ```scss
-// in scss/main.scss
+// scss/base/_index.scss
+
+@forward "reset";
+@forward "typography";
+
+```
+  
+Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
+
+```scss
+// scss/main.scss
 
 @use "base";
 @use "components";
