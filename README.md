@@ -41,22 +41,47 @@ Users should be able to:
 
 ## My process
 
+Write html first, start with css base styles, them add css styles from top of the page down.
+
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- SCSS 
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+SCSS or Sassy SCSS is a css pre preprocessor that allows us to create more organize css by splitting our css into several different files without losing performance. SCSS is similar to css syntax but has some extended functionality. Structure I used was within a scss folder at root of project I have 4 folders. First is called abstracts holds the variables and mixins (blocks of css properties that can be reused). Second folder is called base has the resets and typography. Third folder is called components has the individual UI of the project (in this case there’s just one card). Fourth folder is called layout, has the major layouts of the page (body centering with flex, footer attribution). Lastly there is a main.scss file that uses all these folders with the @use sass rule, this file gets compiled to css. The html file uses the compiled css file.
+
+project-root
+   scss/
+       abstracts/
+           _index.scss
+           _variables.scss
+       base/
+           _index.scss
+           _reset.scss    
+      components/
+          _index.scss
+          _card.scss
+      layout/
+          _index.scss
+          _body.scss
+    main.scss
+
+  The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all its memebers. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss within the folder. By doing this our scss can be organized and easier to maintain.
+
+
+I ran npm init so that I could set up a build script that lets me do npm run watch-sass instead of typing that command every time I want to compile scss to css and watch for changes. The -w or watch flag compiles the scss files to css every time you save so that you can see your updates in real time instead of saving your changes then running the command every time.
+```json
+"scripts": {
+    "watch-sass": "sass -w scss/main.scss css/style.css",
+    "run-sass": "sass scss/main.scss css/style.css"
+  },
+```
+
 
 To see how you can add code snippets, see below:
 
