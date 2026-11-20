@@ -59,7 +59,7 @@ SCSS is similar to css syntax but has some extended functionality. Structure I u
 
 
 
-<img src="images/basic-scss-structure.png" width=“200” />
+<img src="images/basic-scss-structure.png" width=“100” />
 
 
   The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all its memebers. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
