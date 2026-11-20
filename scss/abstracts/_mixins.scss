@@ -1,24 +1,14 @@
 @use "./variables" as *;
 
-@mixin flex-column {
+@mixin flex-column-center {
   display: flex;
   flex-direction: column;
-}
-
-@mixin flex-column-center-main {
-  @include flex-column;
   justify-content: center;
-}
-
-@mixin flex-column-center-both {
-  @include flex-column-center-main;
   align-items: center;
 }
 
-@mixin respond-to($media) {
-  @if $media == "desktop" {
-    @media screen and (min-width: $desktop) {
-      @content;
-    }
+@mixin respond-to-desktop() {
+  @media screen and (min-width: $desktop) {
+    @content;
   }
 }

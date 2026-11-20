@@ -1,0 +1,102 @@
+@use "../abstracts" as *;
+
+.card {
+  width: 100%;
+  max-width: 37.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background-color: $white;
+  border-radius: 10px;
+
+  @include respond-to-desktop {
+    flex-direction: row;
+  }
+
+  &__image-area {
+    // Make the card's image and content the same size
+    flex-basis: 50%;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    // Make the card's image and content the same size
+    flex-basis: 50%;
+  }
+
+  &__category {
+    color: $grey;
+    text-transform: uppercase;
+    letter-spacing: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-family: $title-font;
+    font-weight: 700;
+    font-size: 1.8rem;
+    @include respond-to-desktop {
+      font-size: 2rem;
+      max-width: 10ch;
+    }
+  }
+  &__description {
+    color: $grey;
+    line-height: 1.5;
+  }
+
+  &__pricing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    // Push the price and add cart button to bottom
+    margin-top: auto;
+  }
+
+  &__price {
+    font-family: $title-font;
+    font-weight: 700;
+    color: $green-500;
+    font-size: 1.75rem;
+
+    &--previous {
+      font-family: $body-font;
+      color: $grey;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    background-color: $green-500;
+    padding: 15px 10px;
+    gap: 10px;
+    border-radius: 5px;
+    color: $white;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.4s;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $green-700;
+    }
+  }
+  &__icon {
+    width: 15px;
+    height: 15px;
+  }
+}

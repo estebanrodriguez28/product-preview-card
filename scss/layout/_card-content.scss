@@ -1,7 +1,0 @@
-@use "../abstracts" as *;
-
-.product-card-content {
-  @include flex-column;
-  padding: 30px;
-  gap: 20px;
-}
