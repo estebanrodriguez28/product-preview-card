@@ -36,7 +36,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL]([https://your-solution-url.com](https://estebanrodriguez28.github.io/product-preview-card/)
+- [Solution URL](https://your-solution-url.com](https://estebanrodriguez28.github.io/product-preview-card/)
 
 
 ## My process
