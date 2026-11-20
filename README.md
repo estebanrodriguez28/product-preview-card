@@ -57,10 +57,9 @@ SCSS or Sassy SCSS is a css pre preprocessor that allows us to create more organ
 
 SCSS is similar to css syntax but has some extended functionality. Structure I used was within a scss folder at root of project I have 4 folders. First is called abstracts holds the variables and mixins (blocks of css properties that can be reused). Second folder is called base has the resets and typography. Third folder is called components has the individual UI of the project (in this case there’s just one card). Fourth folder is called layout, has the major layouts of the page (body centering with flex, footer attribution). Lastly there is a main.scss file that uses all these folders with the @use sass rule, this file gets compiled to css. The html file uses the compiled css file.
 
-![](images/basic-scss-structure.png)
 
 
-<img src="images/basic-scss-structure.png" width="200" />
+<img src="images/basic-scss-structure.png" width=“300" />
 
 
   The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all its memebers. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
