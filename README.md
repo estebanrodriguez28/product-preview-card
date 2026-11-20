@@ -62,10 +62,19 @@ SCSS is similar to css syntax but has some extended functionality. Structure I u
 <img src="images/basic-scss-structure.png" width="200" />
 
 
-  The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all its memebers. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
+  The main.scss in within the scss folder. Each folder has a _index.scss file which “forwards” all the scss files within that folder. Allowing us to use each scss folder (abstracts, base) in main without having to write out each scss file within the folder. By doing this our scss can be organized and easier to maintain.
+
+```scss
+// in scss/main.scss
+
+@use "base";
+@use "components";
+@use "layout";
+
+```
 
 
-I ran npm init so that I could set up a build script that lets me do npm run watch-sass instead of typing that command every time I want to compile scss to css and watch for changes. The -w or watch flag compiles the scss files to css every time you save so that you can see your updates in real time instead of saving your changes then running the command every time.
+I ran npm init so that I could set up a build script that lets me do npm run watch-sass instead of typing that command every time I want to compile scss to css and watch for changes. The -w or watch flag compiles the scss files to css every time you save a scss file so that you can see your updates in real time instead of saving your changes then running the command every time.
 ```json
 "scripts": {
     "watch-sass": "sass -w scss/main.scss css/style.css",
@@ -85,7 +94,7 @@ The picture tag in html can be used to define different images based on the devi
 
 Mixins allow us to specify css properties that can be reused such as centering with flex. This way we can reuse css without rewriting the same properties multiple times. Mixins are defined with the @mixin at rule, to use a mixin you use @include make sure to import the mixin from its folder (abstract) with @use relative to which file you are in. 
 
-For example, below you are in _body.scss which is in the layout folder, the abstract folder containing the mixin scss file is one directory up from the file we are in (_body.scss) so you can do “../“ to go up one directory to the abstracts folder and use the mixin.
+For example, below we are in _body.scss which is in the layout folder, the abstract folder containing the mixin scss file is one directory up from the file we are in (_body.scss) so you can do “../“ to go up one directory to the abstracts folder and use the mixin.
 
 ```scss
 // scss/abstracts/_mixin.scss
@@ -138,7 +147,9 @@ Another useful way to use mixins is for media queries. I did mobile first, so on
 
 ```
 
-Images by default are inline. Inline elements have extra space at the bottom to make room for “descenders”. Picture a lined notebook, when writing out words characters like a, l, or i can fit without going over the line below. However other characters like j, g, p go over the line known as “descenders”. More here [Stack Overflow Explaining Issue](https://stackoverflow.com/questions/5804256/why-does-my-image-inside-a-div-have-extra-space-below-it). Inline elements make space for these “descenders” that can go over the baseline, the line characters are sitting on or the line the inline element is sitting on. Fix is to make the image a block element. A lot of css resets make images block elements so will do that in my reset from now on.
+Images by default are inline. Inline elements have extra space at the bottom to make room for “descenders”. Picture a lined notebook, when writing out words characters like a, l, or i can fit without going over the line below. However other characters like j, g, p go over the line known as “descenders”. More here: [Stack Overflow Explaining Issue](https://stackoverflow.com/questions/5804256/why-does-my-image-inside-a-div-have-extra-space-below-it). 
+
+Inline elements make space for these “descenders” that can go over the baseline, the line the inline element is sitting on. Fix is to make the image a block element. A lot of css resets make images block elements so will do that in my reset from now on.
 
 ```scss
 card__image {
@@ -149,7 +160,10 @@ card__image {
 ```
 
 
-Before I had added borders directly to the product image tag, targeting all images within the card component. However later on I add the cart icon svg file within an image tag. I was confused why is part of the image being cut off? Answer was because I was targeting all image tags and adding a border. Fix was to give the product image its own class. This taught me a lesson that its not a good idea to target tags directly in css unless in a reset, cause this can cause effects you don't intend for the same tag later on. Good practice is to give everything a class, write selectors for the exact element you mean.
+Before I had added borders directly to the product image tag, targeting all images within the card component. However later on I add the cart icon svg file within an image tag. I was confused why is part of the icon being cut off? Answer was because I was targeting all image tags and adding a border. Fix was to give the product image its own class. 
+
+> [!NOTE]
+> This taught me a lesson that its not a good idea to target tags directly in css unless in a reset, cause this can cause effects you don't intend for the same tag later on. Good practice is to give everything a class, write selectors for the exact element you mean.
 
 Once the product image had its own class, the cart icon no longer had those borders cutting off part of it. However Claude gave me a better solution. Instead of having border-radius defined in both the product image and the card class, instead could use the overflow hidden css property to clip any content that goes outside of the card. Making the image appear to have rounded corners while only having to define the border radius once in the card class.
 
