@@ -89,16 +89,9 @@ The picture tag in html can be used to define different images based on the devi
 
 ```html
 <picture class="card__image-area">
-          <source
-            srcset="images/image-product-desktop.jpg"
-            media="(min-width:992px)"
-          />
-          <img
-            class="card__image"
-            src="images/image-product-mobile.jpg"
-            alt="product photo with perfume bottle against grey background with two green leaves on its sides"
-          />
-        </picture>
+<source srcset="images/image-product-desktop.jpg” media="(min-width:992px)” />
+<img class=“card__image" src="images/image-product-mobile.jpg” alt="product photo with perfume bottle against grey background with two green leaves on its sides"/>
+</picture>
 ```
 
 Mixins allow us to specify css properties that can be reused such as centering with flex. This way we can reuse css without rewriting the same properties multiple times. Mixins are defined with the @mixin at rule, to use a mixin you use @include make sure to import the mixin from its folder (abstract) with @use relative to which file you are in. 
@@ -127,6 +120,7 @@ body {
 ```
 
 Another useful way to use mixins is for media queries. I did mobile first, so only have media query for desktop but in larger projects could have for tablet as well.
+
 ```scss
 // scss/abstracts/_mixin.scss
 @mixin respond-to-desktop {
@@ -155,7 +149,60 @@ Another useful way to use mixins is for media queries. I did mobile first, so on
 
 ```
 
+Images by default are inline. Inline elements have extra space at the bottom to make room for “descenders”. Picture a lined notebook, when writing out words characters like a, l, or i can fit without going over the line below. However other characters like j, g, p go over the line known as “descenders”. More here [Stack Overflow Explaining Issue](https://stackoverflow.com/questions/5804256/why-does-my-image-inside-a-div-have-extra-space-below-it). Inline elements make space for these “descenders” that can go over the baseline, the line characters are sitting on or the line the inline element is sitting on. Fix is to make the image a block element. A lot of css resets make images block elements so will do that in my reset from now on.
 
+```scss
+card__image {
+    display: block;
+    width: 100%;
+}
+
+```
+
+
+Before I had added borders directly to the product image tag, targeting all images within the card component. However later on I add the cart icon svg file within an image tag. I was confused why is part of the image being cut off? Answer was because I was targeting all image tags and adding a border. Fix was to give the product image its own class. This taught me a lesson that its not a good idea to target tags directly in css unless in a reset, cause this can cause effects you don't intend for the same tag later on. Good practice is to give everything a class, write selectors for the exact element you mean.
+
+Once the product image had its own class, the cart icon no longer had those borders cutting off part of it. However Claude gave me a better solution. Instead of having border-radius defined in both the product image and the card class, instead could use the overflow hidden css property to clip any content that goes outside of the card. Making the image appear to have rounded corners while only having to define the border radius once in the card class.
+
+```scss
+
+.card {
+
+  overflow: hidden;
+  border-radius: 10px;
+  &__image {
+    display: block;
+    width: 100%;
+  }
+
+   &__icon {
+    width: 15px;
+    height: 15px;
+  }
+```
+The ampersand (&) can be used to nest classes within the parent (so the &__image is really just .card__image).
+
+In the design, it appears that the image and the text area take up equal parts (both 50%) of the container. In searching for solution I came across flex the shorthand for flex-grow, flex-shrink, and flex-basis. Flex-grow determines how much of the remaning space in the flex container the flex items will take up, flex-shrink determines how much from the flex items will be removed to fit the flex container. Flex-basis determines the default size of a flex item before the remaining space is distributed. The default is flex: 0 1 auto. So by default flex items start out with whatever size they are given (auto).
+
+Initially, a stackoverflow solution used the shorthand flex: 1 1 0, which should have made the flex items both have an initial size of 0, then each grow the same amount to take up the space (thus each flex item takes up 50% of the container). However, the flex item with all the text content had padding so it does not start at the initial size of 0, ends up being larger than the image.
+
+By setting each flex-item to have a flex-basis of 50%, each flex item’s starting value is 50% of the parent or flex container. Thus the image and the content area both take up 50% of the card.
+
+```scss
+  &__image-area {
+    // Make the card's image and content the same size
+    flex-basis: 50%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    // Make the card's image and content the same size
+    flex-basis: 50%;
+  }
+```
 
 ```js
 const proudOfThisFunc = () => {
