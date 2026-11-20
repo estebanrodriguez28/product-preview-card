@@ -170,7 +170,7 @@ card__image {
 ```
 
 
-Before I had added borders directly to the product image tag, targeting all images within the card component. However later on I add the cart icon svg file within an image tag. I was confused why is part of the icon being cut off? Answer was because I was targeting all image tags and adding a border. Fix was to give the product image its own class. 
+Before I had added borders directly to the product image tag, targeting all images within the card component (like .card img on the img tags directly). However later on I add the cart icon svg file within an image tag. I was confused why is part of the icon being cut off? Answer was because I was targeting all image tags and adding a border. Fix was to give the product image its own class. 
 
 > [!NOTE]
 > This taught me a lesson that its not a good idea to target tags directly in css unless in a reset, cause this can cause effects you don't intend for the same tag later on. Good practice is to give everything a class, write selectors for the exact element you mean.
@@ -197,7 +197,7 @@ The ampersand (&) can be used to nest classes within the parent (so the &__image
 
 In the design, it appears that the image and the text area take up equal parts (both 50%) of the container. In searching for solution I came across flex the shorthand for flex-grow, flex-shrink, and flex-basis. Flex-grow determines how much of the remaning space in the flex container the flex items will take up, flex-shrink determines how much from the flex items will be removed to fit the flex container. Flex-basis determines the default size of a flex item before the remaining space is distributed. The default is flex: 0 1 auto. So by default flex items start out with whatever size they are given (auto).
 
-Initially, a stackoverflow solution used the shorthand flex: 1 1 0, which should have made the flex items both have an initial size of 0, then each grow the same amount to take up the space (thus each flex item takes up 50% of the container). However, the flex item with all the text content had padding so it does not start at the initial size of 0, ends up being larger than the image.
+Initially, a stackoverflow solution used the shorthand flex: 1 1 0, which should have made the flex items both have an initial size of 0, then the remaining space will be distributed equally to each flex item with flex-grow set to 1. So each flex item should be half of the container like the design. However, the flex item with all the text content had padding so it does not start at the initial size of 0 and ends up being larger than the image.
 
 By setting each flex-item to have a flex-basis of 50%, each flex item’s starting value is 50% of the parent or flex container. Thus the image and the content area both take up 50% of the card.
 
@@ -216,6 +216,75 @@ By setting each flex-item to have a flex-basis of 50%, each flex item’s starti
     flex-basis: 50%;
   }
 ```
+
+The ch unit in css can be used to more accurately control line breaks for text. One ch equals the size of the character 0 in that font, meaning whatever number you set ch to can limit the number of characters allowed per line before the word breaks to the next line.
+
+```scss
+&__title {
+    font-family: $title-font;
+    font-weight: 700;
+    font-size: 1.8rem;
+    @include respond-to-desktop {
+      font-size: 2rem;
+      max-width: 10ch;
+    }
+  }
+```
+
+The margin auto property can be used to move the price and cart button to the bottom of the card by taking all the available space at the bottom and adding that space to margin top. Note that auto can only be used for margin-top and margin-bottom in flexbox or grid, for a normal block element auto can only be used on margin-left and margin-right.
+```scss
+&__pricing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    // Push the price and add cart button to bottom
+    margin-top: auto;
+  }
+
+```
+
+> [!Note]
+> I was initially going to use flexbox properties (justify-content) to make the text spacing more similar to the design. However that was not necessary as I used gap property and styled the elements (the text content) itself to get closer to the design.
+
+
+BEM is a naming convention for css. Standing for block, element, modifier. The block is a standalone/independent component or piece of UI such as a card. The element are the things or the “what" that makes up the block, defined by two underscores after the block element (.card__title, .card__text, .card__image). The element answers, what is this thing? Modifiers are used when you have different versions of the same element or thing, defined by two hyphens. Example of modifiers are button with different states or a different card version (.card—-featured, .card__button—-active).
+
+Example modifier from this project. The price was an element within the block or card, but the crossed out price was the same “what” or had the same meaning as the price element. They are both price elements but the crossed out one styled differently so we can use a modifier describing that’s the previous price.
+```scss
+&__price {
+    font-family: $title-font;
+    font-weight: 700;
+    color: $green-500;
+    font-size: 1.75rem;
+
+    &--previous {
+      font-family: $body-font;
+      color: $grey;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+  }
+
+```
+
+> [!NOTE]  
+> While using BEM I kept naming elements based on their appearance instead of their role. The appearance of an element may change (previous price might be come a different color) but the role will likely stay the same (element still represents the previous price). Name elements based on what they are/mean instead of appearance.
+
+Another example where I used appearance to name something instead of a role was the fonts. Before I named the font variables exactly what the fonts were. By naming fonts based on what they represent, can change specific font while not losing meaning.
+
+```scss
+// scss/abstracts/_variables.scss
+$body-font: Montserrat, sans-serif;
+$title-font: Fraunces, serif;
+```
+
+With BEM you always write elements one level down from the block element (block__element) you should not nest further down no matter how nested an element may be in the html (block__outer-element__inner-element). An example you might want to do this is if a icon is within a button (card__button__icon). But what if the icon is moved outside of the button in the html? Then that name is no longer accurate, however if each element is always tied directly to the block (card__icon) the html can move around while name remains accurate
+
+Another reason is that creating BEM classes that are too nested are easy to mistype so classes should always be the block element followed by two underscores then the element.
+
+> [!NOTE]  
+> BEM classes should always be the block element followed by two underscores then element (block__element). No matter how deep the element may be nested in the html, don’t nest elements further from the block (block__element1__element2) as will be harder to maintain.
+
 
 ```js
 const proudOfThisFunc = () => {
