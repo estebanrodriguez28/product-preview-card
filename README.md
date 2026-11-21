@@ -29,7 +29,7 @@ To create a responsive design, used a media query to switch from a flex column o
 
 - See hover and focus states for interactive elements
 
-Added hover state to the button wit hover pseudo class on button.
+Added hover state to the button with hover pseudo class on button.
 
 ### Screenshot
 
