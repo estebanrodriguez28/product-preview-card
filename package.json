@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/estebanrodriguez28/product-preview-card/issues"
   },
-  "homepage": "https://github.com/estebanrodriguez28/product-preview-card#readme"
+  "homepage": "https://github.com/estebanrodriguez28/product-preview-card#readme",
+  "devDependencies": {
+    "sass": "^1.108.2"
+  }
 }
