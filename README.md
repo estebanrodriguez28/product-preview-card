@@ -16,7 +16,6 @@ This is a solution to the [Product preview card component challenge on Frontend 
   - [AI Collaboration](#ai-collaboration)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -25,7 +24,12 @@ This is a solution to the [Product preview card component challenge on Frontend 
 Users should be able to:
 
 - View the optimal layout depending on their device's screen size
+
+To create a responsive design, used a media query to switch from a flex column on mobile to a row on desktop.
+
 - See hover and focus states for interactive elements
+
+Added hover state to the button wit hover pseudo class on button.
 
 ### Screenshot
 
