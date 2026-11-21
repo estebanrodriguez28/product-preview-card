@@ -15,7 +15,6 @@ This is a solution to the [Product preview card component challenge on Frontend 
   - [Useful resources](#useful-resources)
   - [AI Collaboration](#ai-collaboration)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -285,51 +284,36 @@ Another reason is that creating BEM classes that are too nested are easy to mist
 > [!NOTE]  
 > BEM classes should always be the block element followed by two underscores then element (block__element). No matter how deep the element may be nested in the html, don’t nest elements further from the block (block__element1__element2) as will be harder to maintain.
 
+By using BEM we can create more standardized css classes that are easier to maintain, understand, and scale. Combined with scss we can make css much more organized and modular.
 
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+This project took me two days more than my original due date that I set, I wrote the date down that I wanted to finish before starting. This was due to several factors. One was at the end I decided to implement BEM in my css without any experience with BEM before. Next I also had very little experience with scss so organizing the folders and figuring out which files to create took some time to understand. But most of all was reading documentation to try to understand why certain things were happening. Such as why inline elements have that space at the bottom, how to divide space in a flex container among flex items with flex shorthand. Spent a lot of time on MDN docs and going through why css behaves a certain way with Claude where maybe that time should have been cut shorter and more focused on the solution.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+> [!IMPORTANT]  
+> Ask yourself is this the best use of my time? Is this getting me closer to a solution? Sometimes I read through documentation or articles to understand something but did not get closer to a solution and could not recall that information later on. Read documentation with intention. Write due date for the project down or keep it somewhere you can see. If you miss a deadline, reflect why.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+Project management is a skill that will get better over time, I expect the next projects to be much quicker as now I know fundamental css organization techniques (like BEM, SCSS) that I felt were worth investing time into learning early so I can implement them in each project I do. As far as time spent reading documentation and trying to understand why things behave certain ways in css or html, I feel that’s worth investing time into for sure but also not so much that I miss my own deadlines. 
+
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+In future projects I would like to hone in more my scss and BEM skills. I would also like to learn grid and the advantages over flexbox. I still have some difficulty understanding how flexbox fully works, in future projects would like more practice as how flex items actually take up space and how to manipulate flex properties to get the design you want in the clearest way possible.
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [BEM Explained](https://markodenic.com/bem-css/) - This helped me understand how to use BEM what block, element, modifier mean.
+- [SCSS Folder Structure]([https://www.example.com](https://dev.to/joxx/creating-an-organized-scss-file-structure-5dca)) - This article helped me out to structure my scss
+- [Flex shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Flexible_box_layout/Controlling_flex_item_ratios) - This article explained how to use flex shorthand and each property (flex-grow, flex-shrink, flex-basis)
+- [Markdown Shortcuts for README](https://github.com/tchapi/markdown-cheatsheet/blob/main/README.md) - This GitHub repository contains some useful Markdown shortcuts for creating README files
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ### AI Collaboration
 
-Describe how you used AI tools (if any) during this project. This helps demonstrate your ability to work effectively with AI assistants.
+I used Claude for explaining concepts, where I found it most useful is to give me feedback. Helping me find more efficient css and understanding when to reach for certain properties.
 
-- What tools did you use (e.g., ChatGPT, Claude, GitHub Copilot)?
-- How did you use them (e.g., debugging, generating boilerplate, brainstorming solutions)?
-- What worked well? What didn't?
-
-**Note: Delete this note and the content above if you didn't use AI, or replace with your own experience.**
 
 ## Author
+- Frontend Mentor - [@estebanrodriguez28]([https://www.frontendmentor.io/profile/yourusername](https://www.frontendmentor.io/profile/estebanrodriguez28))
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
 
